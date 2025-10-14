@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, viewport-fit=cover, interactive-widget=resizes-content"
+    />
+    <title>Real Smart English Studio</title>
+    <meta
+      name="description"
+      content="The AI-powered studio for Real Smart English. Create compelling ESL monologues and podcasts with crystal-clear controls."
+    />
+    <meta name="color-scheme" content="dark light" />
+    <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#0b1020" />
+    <meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff" />
+    <meta property="og:title" content="Real Smart English Studio" />
+    <meta property="og:description" content="Create ESL monologues and podcasts with AI precision." />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="/og.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <link
+      rel="icon"
+      href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%236374a3' viewBox='0 0 24 24'%3E%3Cpath d='M12 2 2 7l10 5 10-5-10-5zM2 17l10 5 10-5-10-5z'/%3E%3C/svg%3E"
+    />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/manifest.webmanifest" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@300;400;500;700&family=Merienda:wght@700&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.tailwindcss.com?plugins=forms,typography"></script>
+    <link rel="stylesheet" href="/index.css" />
+    <!-- Styles + gradients + starfield remain identical -->
+  </head>
+
+  <body class="min-h-screen bg-cosmic text-text-primary font-sans">
+    <noscript>
+      <div class="p-4 m-4 rounded-lg bg-red-50 text-red-700 border border-red-200">
+        This app requires JavaScript to run. Please enable JavaScript.
+      </div>
+    </noscript>
+
+    <div class="starfield" aria-hidden="true">
+      <div id="stars1"></div>
+      <div id="stars2"></div>
+      <div id="stars3"></div>
+    </div>
+
+    <div id="root"></div>
+
+    <script type="module" src="/src/index.tsx"></script>
+
+    <script>
+      document.body.addEventListener("mousemove", (e) => {
+        requestAnimationFrame(() => {
+          document.documentElement.style.setProperty("--mouse-x", e.clientX + "px");
+          document.documentElement.style.setProperty("--mouse-y", e.clientY + "px");
+        });
+      });
+
+      const mq = window.matchMedia("(prefers-reduced-motion: reduce)");
+      if (mq.matches) document.documentElement.classList.add("page-hidden");
+      mq.addEventListener?.("change", (ev) => {
+        document.documentElement.classList.toggle("page-hidden", ev.matches);
+      });
+
+      if ("serviceWorker" in navigator) {
+        navigator.serviceWorker.register("/sw.js").catch(() => void 0);
+      }
+    </script>
+  </body>
+</html>

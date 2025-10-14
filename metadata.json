@@ -1,0 +1,7 @@
+{
+  "name": "Real Smart English Studio",
+  "description": "The AI-powered studio for the Real Smart English YouTube channel. A premium tool for building compelling ESL monologues and podcasts with crystal-clear controls and professional results.",
+  "requestFramePermissions": [
+    "microphone"
+  ]
+}
